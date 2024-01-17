@@ -1,0 +1,114 @@
+$shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+
+.tickets_list {
+  margin-top: 30px;
+  &__item {
+    display: grid;
+    grid-template-rows: 50px auto;
+    grid-template-columns: 250px;
+    box-shadow: $shadow;
+    background-color: #fff;
+    padding: 10px;
+    & > div:nth-child(1) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h1 {
+        font-size: 25px;
+        color: #2196f3;
+      }
+      img {
+        width: 96px;
+      }
+    }
+  }
+}
+
+.tickets_list {
+  font-weight: 500;
+  &__ticket_info {
+    & section {
+      display: grid;
+      font-size: 16px;
+      grid-template-columns: auto;
+      row-gap: 5px;
+      & div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 10px;
+        border-radius: 10px;
+
+        & span:nth-child(1) {
+          color: #a0b0b9;
+        }
+      }
+    }
+
+    & section:last-child {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 2px solid #47474742;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .tickets_list {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: auto;
+    justify-items: center;
+    margin-top: 20px;
+    &__item {
+      grid-template-columns: 500px;
+      & > div:nth-child(1) {
+        column-gap: 10em;
+        justify-content: space-around;
+        h1 {
+          font-size: 30px;
+          color: #2196f3;
+        }
+        img {
+          width: 110px;
+        }
+      }
+    }
+    &__ticket_info {
+      & section {
+        grid-template-columns: repeat(3, auto);
+        gap: 5px;
+      }
+    }
+
+    & section:last-child {
+      margin-top: none;
+      padding-top: none;
+      border-top: none;
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .tickets_list {
+    grid-column: 2 / -1;
+    display: grid;
+    grid-template-columns: auto;
+    justify-items: center;
+    margin-top: 0;
+    &__item {
+      grid-template-columns: 500px;
+      & > div:nth-child(1) {
+        column-gap: 10em;
+        justify-content: space-around;
+        h1 {
+          font-size: 30px;
+          color: #2196f3;
+        }
+        img {
+          width: 110px;
+        }
+      }
+    }
+  }
+}
