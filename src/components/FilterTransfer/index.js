@@ -1,33 +1,38 @@
 import React from 'react';
 import styles from './TransferStyle.module.scss';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 export const FilterTransfer = () => {
+  const checkedList = useSelector((store) => store.checkedList);
+  const dispatch = useDispatch();
+
+  const onCheckedHandle = (event, id) => {
+    if (id === 'all') {
+      dispatch({ type: 'ALL', payload: event.target.checked });
+    } else {
+      dispatch({ type: 'CURRENT_CHECK', id: id });
+    }
+  };
+
   return (
     <div className={styles.transfer}>
       <span className={styles.count_title}>Количество пересадок</span>
-
-      <label htmlFor="all">
-        <input id="all" type="checkbox" />
-        <span className={styles.check_box}></span>
-        Все
-      </label>
-      <label htmlFor="without_transfer">
-        <input id="without_transfer" type="checkbox" />
-        <span className={styles.check_box}></span>
-        Без пересадок
-      </label>
-      <label htmlFor="one_transfer">
-        <input id="one_transfer" type="checkbox" />
-        <span className={styles.check_box}></span>1 пересадка
-      </label>
-      <label htmlFor="two_transfer">
-        <input id="two_transfer" type="checkbox" />
-        <span className={styles.check_box}></span>2 пересадки
-      </label>
-      <label htmlFor="three_transfer">
-        <input id="three_transfer" type="checkbox" />
-        <span className={styles.check_box}></span>3 пересадки
-      </label>
+      {checkedList?.map((item) => {
+        const { title, id, checked } = item;
+        return (
+          <label key={id} htmlFor={id}>
+            <input
+              id={id}
+              type="checkbox"
+              checked={checked}
+              onChange={(event) => onCheckedHandle(event, id)}
+            />
+            <span className={styles.check_box}></span>
+            {title}
+          </label>
+        );
+      })}
     </div>
   );
 };

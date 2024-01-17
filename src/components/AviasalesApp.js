@@ -5,7 +5,7 @@ import { FilterBest } from './FilterBest';
 import { TicketsList } from './TicketsList';
 import { FilterTransfer } from './FilterTransfer';
 
-function App() {
+export function App() {
   return (
     <div className={appStyles.app}>
       <img src={logo} />
@@ -17,5 +17,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
