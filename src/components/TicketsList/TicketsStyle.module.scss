@@ -9,6 +9,7 @@ $shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
     box-shadow: $shadow;
     background-color: #fff;
     padding: 10px;
+    margin-bottom: 20px;
     & > div:nth-child(1) {
       display: flex;
       align-items: center;
@@ -32,14 +33,14 @@ $shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
       font-size: 16px;
       grid-template-columns: auto;
       row-gap: 5px;
-      & div {
+      & > div {
         display: flex;
         flex-direction: column;
         align-items: center;
         padding: 10px 10px;
         border-radius: 10px;
 
-        & span:nth-child(1) {
+        & > span:nth-child(1) {
           color: #a0b0b9;
         }
       }
@@ -53,6 +54,12 @@ $shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   }
 }
 
+.stops_style {
+  display: flex;
+  flex-direction: row;
+  column-gap: 8px;
+}
+
 @media screen and (min-width: 768px) {
   .tickets_list {
     grid-column: 1 / -1;
@@ -63,7 +70,7 @@ $shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
     &__item {
       grid-template-columns: 500px;
       & > div:nth-child(1) {
-        column-gap: 10em;
+        column-gap: 13em;
         justify-content: space-around;
         h1 {
           font-size: 30px;
@@ -98,8 +105,14 @@ $shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
     margin-top: 0;
     &__item {
       grid-template-columns: 500px;
+      margin-top: 15px;
+      margin-bottom: 0;
+      &:first-child {
+        margin-top: 0;
+        padding-top: 0;
+      }
       & > div:nth-child(1) {
-        column-gap: 10em;
+        column-gap: 13em;
         justify-content: space-around;
         h1 {
           font-size: 30px;

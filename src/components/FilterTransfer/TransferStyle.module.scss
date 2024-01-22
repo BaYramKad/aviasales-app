@@ -55,7 +55,8 @@
 @media screen and (min-width: 1000px) {
   .transfer {
     grid-column: 1;
-    grid-row: 1 / -1;
+    grid-row: 1;
+    height: 265px;
     margin-top: 0;
   }
 }

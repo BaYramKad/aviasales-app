@@ -63,6 +63,10 @@
     "require-jsdoc": 0,
     "react/prop-types": "off",
     "import/no-unresolved": "off",
-    "no-debugger": "off"
+    "import/default": "off",
+    "no-debugger": "off",
+    "no-unused-labels": "off",
+    "no-fallthrough": "off",
+    "react/jsx-key": "off"
   }
 }
