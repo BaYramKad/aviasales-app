@@ -67,6 +67,7 @@
     "no-debugger": "off",
     "no-unused-labels": "off",
     "no-fallthrough": "off",
-    "react/jsx-key": "off"
+    "react/jsx-key": "off",
+    "import/no-duplicates": "off"
   }
 }

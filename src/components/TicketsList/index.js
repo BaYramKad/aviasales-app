@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { message } from 'antd';
 
+import styles from './ticketsStyle.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncThunkTikets } from '../../thunk/thunkTickets';
-import ticketsStyle from './ticketsStyle.module.scss';
 import { Empty } from 'antd';
 import { Ticket } from './Ticket';
 import { Spinner } from '../../assets/Spinner';
@@ -17,22 +17,22 @@ export const TicketsList = () => {
   const { emptyData, serverError } = useSelector((state) => state.errorReduser);
   const [messageApi, contextHolder] = message.useMessage();
 
-  const error = () => {
+  const error = useCallback(() => {
     messageApi.open({
       type: 'error',
       content: serverError.serverErorrMessage,
     });
-  };
-  const messagePopup = () => {
+  }, [messageApi, serverError.serverErorrMessage]);
+  const messagePopup = useCallback(() => {
     messageApi.open({
       type: 'success',
       content: 'Билеты получены',
     });
-  };
+  }, [messageApi]);
   useEffect(() => {
     dispatch(asyncThunkTikets());
-  }, []);
-  //
+  }, [dispatch]);
+
   useEffect(() => {
     if (serverError.isServerError) {
       error();
@@ -40,7 +40,7 @@ export const TicketsList = () => {
     if (tickets.length !== 0 && !isLoading) {
       messagePopup();
     }
-  }, [serverError.isServerError, isLoading]);
+  }, [serverError.isServerError, isLoading, tickets.length, error, messagePopup]);
   const pending = isLoading ? <Spinner /> : null;
   const flatState = isFiltered ? filterTickets.flat().slice(0, 5) : tickets.flat().slice(0, 5);
 
@@ -54,7 +54,7 @@ export const TicketsList = () => {
     );
 
   return (
-    <ul className={ticketsStyle.tickets_list}>
+    <ul className={styles.tickets_list}>
       {pending}
       {contextHolder}
       {ticketsList}
