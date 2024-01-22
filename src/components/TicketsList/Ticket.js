@@ -1,5 +1,5 @@
 import React from 'react';
-import TicketStyles from './ticketsStyle.module.scss';
+import TicketStyles from './MainTicket.module.scss';
 
 import { getCurrentPrice } from '../../assets/getCurrentPrice';
 import { Ways } from './Ways';

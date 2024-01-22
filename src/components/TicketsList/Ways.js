@@ -1,6 +1,6 @@
 import React from 'react';
 
-import WaysStyles from './ticketsStyle.module.scss';
+import WaysStyles from './MainTicket.module.scss';
 import { getCurrentTime } from '../../assets/getCurrentTime';
 
 export const Ways = ({ origin, destination, duration, stops }) => {

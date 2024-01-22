@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { message } from 'antd';
-
-import styles from './ticketsStyle.module.scss';
+import styles from './MainTicket.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncThunkTikets } from '../../thunk/thunkTickets';
 import { Empty } from 'antd';
