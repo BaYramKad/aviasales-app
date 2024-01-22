@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { message } from 'antd';
 import styles from './MainTicket.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,6 +9,7 @@ import { Spinner } from '../../assets/Spinner';
 
 export const TicketsList = () => {
   const dispatch = useDispatch();
+  const [showMore, setShowMore] = useState(5);
   const tickets = useSelector((state) => state.ticketsReduser.tickets);
   const isLoading = useSelector((state) => state.ticketsReduser.loading);
   const filterTickets = useSelector((state) => state.ticketsReduser.filterTickets);
@@ -41,7 +42,9 @@ export const TicketsList = () => {
     }
   }, [serverError.isServerError, isLoading, tickets.length, error, messagePopup]);
   const pending = isLoading ? <Spinner /> : null;
-  const flatState = isFiltered ? filterTickets.flat().slice(0, 5) : tickets.flat().slice(0, 5);
+  const flatState = isFiltered
+    ? filterTickets.flat().slice(0, showMore)
+    : tickets.flat().slice(0, showMore);
 
   const ticketsList =
     !isLoading && emptyData.isEmpty ? (
@@ -57,6 +60,9 @@ export const TicketsList = () => {
       {pending}
       {contextHolder}
       {ticketsList}
+      <button className={styles.show_more} onClick={() => setShowMore((prev) => prev + 5)}>
+        Показать еще 5 билетов
+      </button>
     </ul>
   );
 };
