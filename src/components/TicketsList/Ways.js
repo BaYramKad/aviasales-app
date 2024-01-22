@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ticketsStyle from './ticketsStyle.module.scss';
+import WaysStyles from './ticketsStyle.module.scss';
 import { getCurrentTime } from '../../assets/getCurrentTime';
 
 export const Ways = ({ origin, destination, duration, stops }) => {
@@ -24,7 +24,7 @@ export const Ways = ({ origin, destination, duration, stops }) => {
       </div>
       <div>
         <span>{countStops === 0 ? 'Нет пересадок' : wordForStops}</span>
-        <div className={ticketsStyle.stops_style}>{stopsSpan}</div>
+        <div className={WaysStyles.stops_style}>{stopsSpan}</div>
       </div>
     </section>
   );
