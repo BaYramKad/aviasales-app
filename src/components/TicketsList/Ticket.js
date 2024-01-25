@@ -6,7 +6,8 @@ import { Ways } from './Ways';
 
 export const Ticket = ({ carrier, price, segments }) => {
   const ways = segments.map((item) => {
-    return <Ways key={Math.random()} {...item} price={price} />;
+    const id = `${item.origin}_${item.destination}_${item.date}`;
+    return <Ways key={id} date={item.date} carier={carrier} {...item} price={price} />;
   });
 
   return (

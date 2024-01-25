@@ -5,9 +5,10 @@ import { getCurrentTime } from '../../assets/getCurrentTime';
 
 export const Ways = ({ origin, destination, duration, stops }) => {
   const countStops = stops.length;
+  let id = [...stops].length;
   const wordForStops = countStops === 1 ? `${countStops} пересадка` : `${countStops} пересадки`;
   const stopsSpan = stops.map((item, i) => {
-    return <span key={Math.random()}>{item}</span>;
+    return <span key={id--}>{item}</span>;
   });
 
   return (

@@ -10,7 +10,7 @@
   padding: 1px;
   row-gap: 1px;
 
-  button {
+  label {
     text-transform: uppercase;
     padding: 15px;
     background-color: #fff;
@@ -18,22 +18,25 @@
     font-size: 12px;
     font-weight: 500;
     cursor: pointer;
-    &.active {
+    &:has(input:checked) {
       background-color: #2196f3;
       color: white;
     }
-  }
-  button:not(.active):hover {
-    background-color: #d4ebff;
+    input {
+      position: absolute;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
   }
 
-  button:first-child {
+  label > input[type='radio']:first-child {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
-  button:last-child {
+  label > input[type='radio']:last-child {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border-top-left-radius: 0;
@@ -53,13 +56,13 @@
     display: grid;
     grid-template-columns: repeat(3, auto);
     margin-top: 0;
-    button:first-child {
+    label:first-child {
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
-    button:last-child {
+    label:last-child {
       border-top-right-radius: 10px;
       border-bottom-right-radius: 10px;
       border-top-left-radius: 0;
